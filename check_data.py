@@ -18,10 +18,10 @@ def start_crawl_data(date, table):
         for arg in args:
             request_args = get_request_args(init_args, arg)
             print("request parameters: " + str(request_args))
-            # Crawldata(request_args)
+            Crawldata(request_args)
     else:
         print("request parameters: " + str(init_args))
-        # Crawldata(init_args)
+        Crawldata(init_args)
 
 
 def get_request_args(pass_arg, arg):
@@ -38,7 +38,6 @@ if __name__ == '__main__':
         print("table: " + table)
         print('=======')
         table = table_spider_dict[table]
-        spider = table['spider']
         # ------- to be implement --------
         for single_date in [start_date + timedelta(n) for n in range(day_count)]:
             if (single_date.isoweekday() != 6 and single_date.isoweekday() != 7):
