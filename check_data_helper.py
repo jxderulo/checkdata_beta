@@ -10,36 +10,49 @@ sys.stdout = Logger()
 
 # key:table, value:spider
 table_spider_dict = {
-  # "taifex_big3_futures_table": {
-  #   "spider": "TAIFEX_get_big3_futures",
-  #   "commodity_id": ["TXF", "MXF", "FXF", "EXF"]
-  # },
-  # "taifex_large_trader_futures_table": {
-  #   "spider": "TAIFEX_get_large_trader_futures",
-  #   "contract_id": []
-  # },
-  # "taifex_futures_price_table": {
-  #   "spider": "TAIFEX_get_futures_price"
-  #   "query_type": [],
-  #   "market_code": [],
-  #   "commodity_id": []
-  # },
-  # "taifex_big3_options_table": {
-  #   "spider": "TAIFEX_get_big3_options",
-  #   "query_type": [],
-  #   "do_query": [],
-  #   "commodity_id": []
-  # },
-  # "taifex_large_trader_options_table": {
-  #   "spider": "TAIFEX_get_large_trader_options",
-  #   "contract_id": []
-  # },
-  # "taifex_options_price_table": {
-  #   "spider": "TAIFEX_get_options_price",
-  #   "query_type": [],
-  #   "market_code": [],
-  #   "commodity_id": []
-  # },
+  "taifex_big3_futures_table": {
+    "spider": "TAIFEX_get_big3_futures",
+    "serveral_args": [
+        {"commodity_id": "TXF"},
+        {"commodity_id": "MXF"},
+        {"commodity_id": "FXF"},
+        {"commodity_id": "EXF"},
+    ]
+  },
+  "taifex_large_trader_futures_table": {
+    "spider": "TAIFEX_get_large_trader_futures",
+    "serveral_args": [
+        {"contract_id": "TX"}
+    ]
+
+  },
+  "taifex_futures_price_table": {
+    "spider": "TAIFEX_get_futures_price",
+    "serveral_args": [
+        {"commodity_id": "TX", "query_type": 2, "market_code": 0},
+        {"commodity_id": "MTX", "query_type": 2, "market_code": 0},
+        {"commodity_id": "TX", "query_type": 2, "market_code": 1},
+    ]
+  },
+  "taifex_big3_options_table": {
+    "spider": "TAIFEX_get_big3_options",
+    "serveral_args": [
+        {"query_type": 1, "do_query": 1, "commodity_id": "TXO"}
+    ]
+  },
+  "taifex_large_trader_options_table": {
+    "spider": "TAIFEX_get_large_trader_options",
+    "serveral_args": [
+        {"contract_id": "TXO"}
+    ]
+  },
+  "taifex_options_price_table": {
+    "spider": "TAIFEX_get_options_price",
+    "serveral_args": [
+        {"query_type": 2, "market_code": 0, "commodity_id": "TXO"},
+        {"query_type": 2, "market_code": 1, "commodity_id": "TXO"}
+    ]
+  },
   "twse_taiex_table": {
     "spider": "TWSE_get_taiex",
   },
@@ -71,6 +84,6 @@ table_spider_dict = {
     "spider": "TPEX_get_big3_trading_value",
   },
   "tpex_big3_trading_value_table2": {
-    "spider": "TPEX_get_big3_trading_value"
+    "spider": "TPEX_get_big3_trading_value2"
   }
 }
